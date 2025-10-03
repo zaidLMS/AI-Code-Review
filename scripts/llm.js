@@ -23,7 +23,6 @@ async function callOpenAI({ model, system, user, maxTokens, temperature }) {
       max_tokens: maxTokens,
     }),
   });
-  let count = 0;
   if (!res.ok) throw new Error(`OpenAI error: ${res.status} ${await res.text()}`);
   const json = await res.json();
   return json.choices?.[0]?.message?.content || "";
