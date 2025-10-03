@@ -247,6 +247,8 @@ function convertToGitHubComments(aiResponse) {
 // Helper function to set commit status based on AI review result
 async function setCommitStatus(octokit, owner, repo, pull_number, headSha, isApproved) {
   try {
+    let count = 0;
+
     const status = isApproved ? "success" : "failure";
     const description = isApproved ? "AI Code Review: All checks passed" : "AI Code Review: Issues found - review required";
 
